@@ -2,35 +2,60 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Canvas Organizado</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Proyecto API Canvas 2D</title>
 
+<!-- Bootstrap 5 -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
 <style>
 body{
   background: linear-gradient(135deg,#1e3c72,#2a5298);
   min-height:100vh;
+  display:flex;
+  flex-direction:column;
 }
+
 .card{
   border-radius:20px;
   box-shadow:0 10px 30px rgba(0,0,0,0.3);
 }
+
 canvas{
   background:white;
   border-radius:15px;
 }
-.titulo{
-  font-weight:700;
+
+footer{
+  margin-top:auto;
+  background:#0d1b2a;
   color:white;
+  padding:20px;
 }
 </style>
 </head>
 <body>
 
-<div class="container py-5">
-  <h1 class="text-center titulo mb-4">Proyecto API Canvas 2D</h1>
+<!-- ================= NAVBAR ================= -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
+  <div class="container">
+    <span class="navbar-brand fw-bold">
+      🎨 Proyecto API Canvas 2D
+    </span>
+    <div class="text-white">
+      Programación Web
+    </div>
+  </div>
+</nav>
 
+<!-- ================= CONTENIDO ================= -->
+<div class="container py-5">
   <div class="card p-4">
+
+    <h2 class="text-center mb-4">
+      Comparación: Imagen Programada vs Imagen Original
+    </h2>
+
     <div class="row text-center">
 
       <!-- IZQUIERDA -->
@@ -38,7 +63,7 @@ canvas{
         <h4>Dibujo por Programación</h4>
         <canvas id="canvas" width="500" height="400"></canvas>
         <button class="btn btn-primary mt-3 w-100" onclick="dibujarPaisaje()">
-          Dibujar
+          Dibujar Paisaje
         </button>
       </div>
 
@@ -46,14 +71,29 @@ canvas{
       <div class="col-md-6">
         <h4>Imagen Original</h4>
         <img src="https://i.imgur.com/8bKQX7P.png"
-             class="img-fluid rounded"
+             class="img-fluid rounded shadow"
              alt="Paisaje original">
       </div>
 
     </div>
+
   </div>
 </div>
 
+<!-- ================= FOOTER ================= -->
+<footer class="text-center">
+  <div class="container">
+    <p class="mb-1"><strong>Jean Samuel Laroque</strong></p>
+    <p class="mb-1">Proyecto Académico - API Canvas 2D</p>
+    <p class="mb-0">© 2026 - Todos los derechos reservados</p>
+  </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- JS -->
 <script src="js/main.js"></script>
+
 </body>
 </html>
