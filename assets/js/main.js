@@ -1,59 +1,112 @@
+// =====================================
+// CONFIGURACIÓN INICIAL
+// =====================================
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
+
+
+// =====================================
+// FUNCIONES GENERALES POR TIPO
+// =====================================
+
+// RECTÁNGULO
+function dibujarRectangulo(x, y, ancho, alto, color){
+    ctx.fillStyle = color;
+    ctx.fillRect(x, y, ancho, alto);
+}
+
+// CÍRCULO
+function dibujarCirculo(x, y, radio, color){
+    ctx.beginPath();
+    ctx.fillStyle = color;
+    ctx.arc(x, y, radio, 0, Math.PI * 2);
+    ctx.fill();
+}
+
+// TRIÁNGULO
+function dibujarTriangulo(x1,y1,x2,y2,x3,y3,color){
+    ctx.beginPath();
+    ctx.moveTo(x1,y1);
+    ctx.lineTo(x2,y2);
+    ctx.lineTo(x3,y3);
+    ctx.closePath();
+    ctx.fillStyle = color;
+    ctx.fill();
+}
+
+// LÍNEA
+function dibujarLinea(x1,y1,x2,y2,color){
+    ctx.beginPath();
+    ctx.strokeStyle = color;
+    ctx.moveTo(x1,y1);
+    ctx.lineTo(x2,y2);
+    ctx.stroke();
+}
+
+
+// =====================================
+// FUNCIÓN PRINCIPAL
+// =====================================
+
 function dibujarPaisaje(){
 
     ctx.clearRect(0,0,canvas.width,canvas.height);
 
-    // ===== CIELO CON DEGRADADO =====
-    let gradiente = ctx.createLinearGradient(0,0,0,200);
-    gradiente.addColorStop(0,"#4facfe");
-    gradiente.addColorStop(1,"#00f2fe");
-    ctx.fillStyle = gradiente;
-    ctx.fillRect(0,0,500,200);
+    // ==============================
+    // RECTÁNGULOS
+    // ==============================
+    dibujarRectangulo(0,0,500,200,"#87CEEB");      // cielo
+    dibujarRectangulo(0,200,500,200,"green");      // suelo
+    dibujarRectangulo(70,160,20,40,"#8B4513");     // tronco
+    dibujarRectangulo(330,230,80,60,"#FF6347");    // casa
+    dibujarRectangulo(360,255,20,35,"#654321");    // puerta
+    dibujarRectangulo(340,240,18,18,"lightblue");  // ventana 1
+    dibujarRectangulo(390,240,18,18,"lightblue");  // ventana 2
 
-    // ===== SUELO =====
-    dibujarRectangulo(0,200,500,200,"#228B22");
 
-    // ===== SOL =====
-    dibujarCirculo(420,70,30,"yellow");
+    // ==============================
+    // CÍRCULOS
+    // ==============================
+    dibujarCirculo(420,70,30,"yellow"); // sol
 
-    ctx.lineWidth = 3;
+    // copa del árbol
+    dibujarCirculo(80,150,20,"darkgreen");
+    dibujarCirculo(60,170,18,"darkgreen");
+    dibujarCirculo(100,170,18,"darkgreen");
+
+    // flor 1
+    dibujarCirculo(200,300,4,"yellow");
+    dibujarCirculo(200,290,4,"pink");
+    dibujarCirculo(200,310,4,"pink");
+    dibujarCirculo(190,300,4,"pink");
+    dibujarCirculo(210,300,4,"pink");
+
+    // flor 2
+    dibujarCirculo(240,320,4,"yellow");
+    dibujarCirculo(240,310,4,"purple");
+    dibujarCirculo(240,330,4,"purple");
+    dibujarCirculo(230,320,4,"purple");
+    dibujarCirculo(250,320,4,"purple");
+
+
+    // ==============================
+    // TRIÁNGULOS
+    // ==============================
+    dibujarTriangulo(50,200,150,100,250,200,"#654321");
+    dibujarTriangulo(180,200,280,120,380,200,"#654321");
+    dibujarTriangulo(300,200,400,110,500,200,"#654321");
+    dibujarTriangulo(310,230,370,180,430,230,"brown"); // techo
+
+
+    // ==============================
+    // LÍNEAS
+    // ==============================
     for(let i=0;i<8;i++){
         dibujarLinea(
             420,70,
             420+55*Math.cos(i*Math.PI/4),
             70+55*Math.sin(i*Math.PI/4),
-            "orange"
+            "yellow"
         );
     }
-
-    // ===== MONTAÑAS =====
-    dibujarTriangulo(50,200,150,100,250,200,"#5c4033");
-    dibujarTriangulo(180,200,280,120,380,200,"#654321");
-    dibujarTriangulo(300,200,400,110,500,200,"#5c4033");
-
-    // ===== ÁRBOL =====
-    dibujarRectangulo(70,160,20,40,"#8B4513");
-
-    dibujarCirculo(80,150,20,"darkgreen");
-    dibujarCirculo(60,170,18,"green");
-    dibujarCirculo(100,170,18,"green");
-
-    // ===== CASA =====
-    dibujarRectangulo(330,230,80,60,"#FF6347");
-    dibujarTriangulo(310,230,370,180,430,230,"#8B0000");
-    dibujarRectangulo(360,255,20,35,"#654321");
-    dibujarRectangulo(340,240,18,18,"lightblue");
-    dibujarRectangulo(390,240,18,18,"lightblue");
-
-    // ===== FLORES =====
-    function flor(x,y,colorPetalo){
-        dibujarCirculo(x,y,4,"yellow");
-        dibujarCirculo(x,y-10,4,colorPetalo);
-        dibujarCirculo(x,y+10,4,colorPetalo);
-        dibujarCirculo(x-10,y,4,colorPetalo);
-        dibujarCirculo(x+10,y,4,colorPetalo);
-        dibujarLinea(x,y,x,y+25,"green"); // tallo
-    }
-
-    flor(200,300,"pink");
-    flor(240,320,"purple");
 }
