@@ -55,16 +55,21 @@ Total: **30 figuras básicas**
 ---
 
 ## 📂 Estructura del Proyecto
-assets/
-  css/styles.css
-  js/main.js
-  img/imagen.jpg
-  img/favicon.png
-
-index.html
-README.md
-
-
+Examen Tema 1/
+│
+├── index.html
+├── README.md
+│
+└── assets/
+    ├── css/
+    │   └── styles.css
+    │
+    ├── img/
+    │   ├── favicon.png
+    │   └── imagen.jpg
+    │
+    └── js/
+        └── main.js
 ---
 
 ## 🚀 Cómo Ejecutar el Proyecto
